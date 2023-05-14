@@ -1894,3 +1894,40 @@ section {
   color: #fff;
   text-decoration: none;
 }
+
+.btn-contact {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  padding: 10px 20px;
+  background-color: #2487ce;
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 18px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.btn-contact:hover {
+  background-color: #cc5500;
+}
+
+
+.whatsapp-btn {
+  position: fixed;
+  bottom: 60px;
+  right: 20px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 30px;
+  z-index: 9999;
+  display: flex; /* added */
+  align-items: center; /* added */
+}
+
+
+.whatsapp-btn:hover {
+  background-color: #128c7e;
+}
