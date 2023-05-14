@@ -1931,3 +1931,17 @@ section {
 .whatsapp-btn:hover {
   background-color: #128c7e;
 }
+
+
+button[type="submit"] {
+  background-color: #2487ce;
+  color: #fff;
+  border-radius: 5px;
+  padding: 10px 20px;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+button[type="submit"]:hover {
+  background-color: #2487ce;
+}
