@@ -39,7 +39,7 @@
   ======================================================== -->
 </head>
 
-  <a href="https://wa.me/+5492214347305?text=Hola!%20estuve%20visitando%20tu%20sitio%20web%20y%20quisiera%20que%20me%20contacten%20para%20hacer%20una%20consulta." target="_blank" class="whatsapp-btn" title="Contactar por WhatsApp">
+  <a href="https://wa.me/1234567890?text=Hola!%20estuve%20visitando%20tu%20sitio%20web%20y%20quisiera%20que%20me%20contacten%20para%20hacer%20una%20consulta." target="_blank" class="whatsapp-btn" title="Contactar por WhatsApp">
   <img src="assets/img/logos/whatsapp.png" alt="WhatsApp" width="30" height="30" />
 
 </a>
@@ -596,45 +596,26 @@
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form action="https://formspree.io/f/mwkjzbya" method="POST" class="php-email-form">
-                <div class="row gy-2 gx-md-3">
-                    <div class="col-md-6 form-group">
-                        <label for="name">Tu nombre</label>
-                        <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        <label for="email">Tu Email</label>
-                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="subject">Asunto</label>
-                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
-                    </div>
-                    <div class="form-group col-12">
-                        <label for="message">Mensaje</label>
-                        <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
-                    </div>
-                    <div class="my-3 col-12">
-                        <div class="loading">Cargando</div>
-                        <div class="error-message"></div>
-                        <div class="sent-message">Tu mensaje fue enviado. Muchas gracias!</div>
-                    </div>
-                    <div class="text-center col-12">
-                        <button type="submit" id="submit-form">Enviar</button>
-                    </div>
+
+            <form action="https://formspree.io/f/mwkjzbya" method="POST">
+              <div class="row gy-2 gx-md-3">
+                <div class="col-md-6 form-group">
+                  <input type="text" name="name" class="form-control"  placeholder="Your Name" required>
                 </div>
+                <div class="col-md-6 form-group">
+                  <input type="email" class="form-control" name="email"  placeholder="Your Email" required>
+                </div>
+                <div class="form-group col-12">
+                  <input type="text" class="form-control" name="subject" placeholder="Subject" required>
+                </div>
+                <div class="form-group col-12">
+                  <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
+                </div>
+                <div class="text-center col-12"><button type="submit">Send Message</button></div>
+              </div>
             </form>
-        </div>
-        
-        <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-        <script>
-                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               
-        </script>
-        
-          
-          
-          
-        
+
+          </div>
 
         </div>
 
@@ -730,37 +711,6 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
-
-<script>
-  $(function () {
-    $('#contact-form').submit(function (e) {
-      e.preventDefault();
-      var $form = $(this);
-      $.ajax({
-        url: $form.attr('action'),
-        method: 'POST',
-        data: $form.serialize(),
-        dataType: 'json',
-        beforeSend: function () {
-          $('.loading').show();
-        },
-        success: function (response) {
-          $('.loading').hide();
-          if (response.ok) {
-            $('.sent-message').show();
-            $form.trigger('reset');
-          } else {
-            $('.error-message').text(response.error).show();
-          }
-        },
-        error: function () {
-          $('.loading').hide();
-          $('.error-message').text('Ocurrió un error al enviar el mensaje. Inténtalo de nuevo más tarde.').show();
-        }
-      });
-    });
-  });
-</script>
 
 
   <!-- Template Main JS File -->
