@@ -596,29 +596,34 @@
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
-
-            <form action="https://formspree.io/f/mwkjzbya" method="POST">
-              <label>
-                Your Name:
-                <input type="text" name="name" required>
-              </label>
-              <label>
-                Your Email:
-                <input type="email" name="email" required>
-              </label>
-              <label>
-                Subject:
-                <input type="text" name="subject" required>
-              </label>
-              <label>
-                Message:
-                <textarea name="message" required></textarea>
-              </label>
-              <button type="submit">Send</button>
+            <form action="https://formspree.io/f/mwkjzbya" method="POST" class="php-email-form">
+                <div class="row gy-2 gx-md-3">
+                    <div class="col-md-6 form-group">
+                        <label for="name">Tu nombre</label>
+                        <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
+                    </div>
+                    <div class="col-md-6 form-group">
+                        <label for="email">Tu Email</label>
+                        <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="subject">Asunto</label>
+                        <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
+                    </div>
+                    <div class="form-group col-12">
+                        <label for="message">Mensaje</label>
+                        <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                    </div>
+                    <div class="my-3 col-12">
+                        <div class="loading">Cargando</div>
+                        <div class="error-message"></div>
+                        <div class="sent-message" style="display:none;">Tu mensaje fue enviado. Muchas gracias!</div>
+                    </div>
+                    <div class="text-center col-12"><button type="submit">Enviar</button></div>
+                </div>
             </form>
-            
-
-          </div>
+        </div>
+        
 
         </div>
 
@@ -714,6 +719,33 @@
   <script src="assets/vendor/isotope-layout/isotope.pkgd.min.js"></script>
   <script src="assets/vendor/swiper/swiper-bundle.min.js"></script>
   <script src="assets/vendor/php-email-form/validate.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const form = document.querySelector('.php-email-form');
+        form.addEventListener('submit', async (event) => {
+            event.preventDefault();
+            const formData = new FormData(form);
+            const response = await fetch(form.action, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json'
+                },
+                body: formData
+            });
+            if (response.ok) {
+                form.reset();
+                const sentMessage = document.querySelector('.sent-message');
+                sentMessage.style.display = 'block';
+                window.location.href = "/thanks?language=es";
+            } else {
+                const errorMessage = document.querySelector('.error-message');
+                errorMessage.textContent = 'Error al enviar el mensaje. Por favor, inténtalo de nuevo más tarde.';
+                errorMessage.style.display = 'block';
+            }
+        });
+    });
+</script>
 
 
   <!-- Template Main JS File -->
