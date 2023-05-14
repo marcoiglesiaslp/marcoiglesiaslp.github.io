@@ -615,15 +615,32 @@
                   <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
                 </div>
                 <div class="my-3 col-12">
-                  <div class="text-center">
-                    <button type="submit">Enviar</button>
-                  </div>
                   <div class="loading">Cargando</div>
                   <div class="error-message"></div>
-                  <div class="sent-message">Tu mensaje fue enviado. Muchas gracias!</div>
+                  <div class="sent-message" style="display:none">Tu mensaje fue enviado. Muchas gracias!</div>
                 </div>
+                <div class="text-center col-12"><button type="submit" onclick="submitButton()">Enviar</button></div>
               </div>
             </form>
+            <script>
+              function submitButton() {
+                var sentMessage = document.querySelector('.sent-message');
+                sentMessage.style.display = 'none';
+                document.querySelector('.loading').style.display = 'block';
+                document.querySelector('.error-message').innerHTML = '';
+                document.querySelector('.error-message').style.display = 'none';
+                document.querySelector('form').submit();
+              }
+              var urlParams = new URLSearchParams(window.location.search);
+              var language = urlParams.get('language');
+              if (language === 'es') {
+                document.querySelector('#name').setAttribute('placeholder', 'Nombre');
+                document.querySelector('#email').setAttribute('placeholder', 'Email');
+                document.querySelector('#subject').setAttribute('placeholder', 'Asunto');
+                document.querySelector('textarea').setAttribute('placeholder', 'Mensaje');
+                document.querySelector('button').innerHTML = 'Enviar';
+              }
+            </script>
           </div>
           
           
