@@ -596,31 +596,36 @@
           </div>
 
           <div class="col-lg-8 mt-5 mt-lg-0">
-            <form id="contact-form" action="https://formspree.io/f/mwkjzbya" method="POST">
-                <div class="form-group">
-                    <label for="name">Tu nombre</label>
-                    <input type="text" class="form-control" id="name" name="name" placeholder="Nombre" required>
+            <form action="https://formspree.io/f/mwkjzbya" method="POST" class="php-email-form">
+              <div class="row gy-2 gx-md-3">
+                <div class="col-md-6 form-group">
+                  <label for="name">Tu nombre</label>
+                  <input type="text" name="name" class="form-control" id="name" placeholder="Nombre" required>
                 </div>
-                <div class="form-group">
-                    <label for="email">Tu Email</label>
-                    <input type="email" class="form-control" id="email" name="email" placeholder="Email" required>
+                <div class="col-md-6 form-group">
+                  <label for="email">Tu Email</label>
+                  <input type="email" class="form-control" name="email" id="email" placeholder="Email" required>
                 </div>
-                <div class="form-group">
-                    <label for="subject">Asunto</label>
-                    <input type="text" class="form-control" id="subject" name="subject" placeholder="Asunto" required>
+                <div class="form-group col-12">
+                  <label for="subject">Asunto</label>
+                  <input type="text" class="form-control" name="subject" id="subject" placeholder="Asunto" required>
                 </div>
-                <div class="form-group">
-                    <label for="message">Mensaje</label>
-                    <textarea class="form-control" id="message" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                <div class="form-group col-12">
+                  <label for="message">Mensaje</label>
+                  <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
                 </div>
-                <button type="submit" class="btn btn-primary">Enviar</button>
+                <div class="my-3 col-12">
+                  <div class="text-center">
+                    <button type="submit">Enviar</button>
+                  </div>
+                  <div class="loading">Cargando</div>
+                  <div class="error-message"></div>
+                  <div class="sent-message">Tu mensaje fue enviado. Muchas gracias!</div>
+                </div>
+              </div>
             </form>
-            <div class="text-center mt-3">
-                <div class="loading">Cargando</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Tu mensaje fue enviado. Muchas gracias!</div>
-            </div>
-        </div>
+          </div>
+          
           
           
         
