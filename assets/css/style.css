@@ -1955,3 +1955,8 @@ button[type="submit"]:hover {
   opacity: 0;
   }
   
+
+  .honeypot {
+    display: none;
+}
+
