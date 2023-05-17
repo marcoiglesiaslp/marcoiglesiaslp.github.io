@@ -625,6 +625,14 @@
         
           
         <script>
+
+          window.onload = function() {
+              var el = document.getElementById('g-recaptcha-response');
+              if (el) {
+                el.setAttribute('required', 'required');
+              }
+            };
+
           function submitForm(event) {
             event.preventDefault();
             var form = event.target;
@@ -640,11 +648,11 @@
                 'Accept': 'application/json'
               }
             })
-            .then(response => {
-              if (!response.ok) {
-                throw new Error(response.status + ' ' + response.statusText);
-              }
-              return response.json();
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error(response.statusText);
+                }
+                return response.json();
               })
               .then(data => {
                 alert("Tu mensaje fue enviado. ¡Muchas gracias!");
