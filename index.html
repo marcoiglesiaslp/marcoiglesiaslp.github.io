@@ -599,42 +599,47 @@
           </div>
           <div class="col-lg-8 mt-5 mt-lg-0">
             <form action="https://formspree.io/f/mwkjzbya" method="POST" onsubmit="submitForm(event)">
-                <div class="row gy-2 gx-md-3">
-                    <div class="col-md-6 form-group">
-                        Tu Nombre
-                        <input type="text" name="name" class="form-control" placeholder="Nombre" required>
-                    </div>
-                    <div class="col-md-6 form-group">
-                        Tu email
-                        <input type="email" class="form-control" name="email" placeholder="Email" required>
-                    </div>
-                    <div class="form-group col-12" style="margin-bottom: 20px;">
-                        Asunto
-                        <input type="text" class="form-control" name="subject" placeholder="Asunto" required>
-                    </div>
-                    <div class="form-group col-12">
-                        Mensaje
-                        <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
-                    </div>
-                    <div class="text-center col-12"><button type="submit">Enviar mensaje</button></div>
+              <div class="row gy-2 gx-md-3">
+                <div class="col-md-6 form-group">
+                  Tu Nombre
+                  <input type="text" name="name" class="form-control" placeholder="Nombre" required>
                 </div>
+                <div class="col-md-6 form-group">
+                  Tu email
+                  <input type="email" class="form-control" name="email" placeholder="Email" required>
+                </div>
+                <div class="form-group col-12" style="margin-bottom: 20px;">
+                  Asunto
+                  <input type="text" class="form-control" name="subject" placeholder="Asunto" required>
+                </div>
+                <div class="form-group col-12">
+                  Mensaje
+                  <textarea class="form-control" name="message" rows="5" placeholder="Mensaje" required></textarea>
+                </div>
+                <div class="g-recaptcha" data-sitekey="marco-form-key-1"></div> 
+                <div class="text-center col-12"><button type="submit">Enviar mensaje</button></div>
+              </div>
             </form>
-        </div>
+          </div>
+          
         
           
-          <script>
-            function submitForm(event) {
-              event.preventDefault();
-              var form = event.target;
-              var formData = new FormData(form);
-          
-              fetch(form.action, {
-                method: form.method,
-                body: formData,
-                headers: {
-                  'Accept': 'application/json'
-                }
-              })
+        <script>
+          function submitForm(event) {
+            event.preventDefault();
+            var form = event.target;
+            var formData = new FormData(form);
+            var recaptchaResponse = grecaptcha.getResponse(); // Get the reCAPTCHA response
+        
+            formData.append('g-recaptcha-response', recaptchaResponse); // Append the reCAPTCHA response to the form data
+        
+            fetch(form.action, {
+              method: form.method,
+              body: formData,
+              headers: {
+                'Accept': 'application/json'
+              }
+            })
               .then(response => {
                 if (!response.ok) {
                   throw new Error(response.statusText);
@@ -642,14 +647,15 @@
                 return response.json();
               })
               .then(data => {
-                alert("Tu mensaje fue enviado. Muchas gracias!");
+                alert("Tu mensaje fue enviado. ¡Muchas gracias!");
                 form.reset();
               })
               .catch(error => {
                 console.error('Error:', error);
               });
-            }
-          </script>
+          }
+        </script>
+        
 
         </div>
 
@@ -745,6 +751,7 @@
 
   <!-- Template Main JS File -->
   <script src="assets/js/main.js"></script>
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js" integrity="sha512-Ua/Qs6fkE4fVw2Z6+MV91w9lOQhKgdL5yv5xXK52HREmbC1iklGw3brTrsDLea6oTKVIO/pAeDfh9z9Q7qZ1nQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
