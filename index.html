@@ -631,6 +631,8 @@
             <div class="form-group mt-3">
               <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
             </div>
+            <!-- Hidden field for honeypot -->
+            <input type="text" name="adress" class="honeypot" style="display: none;">
             <div class="text-center"><button type="submit">Send Message</button></div>
           </form>
         </div>
@@ -665,8 +667,25 @@
             });
           }
         </script>
-
-
+        <script>
+          function submitForm(event) {
+            event.preventDefault(); // Prevent the form from submitting by default
+        
+            // Get the value of the honeypot field
+            var honeypotValue = document.querySelector('input[name="adress"]').value;
+        
+            // Check if the honeypot field is completed
+            if (honeypotValue) {
+              // Honeypot field is completed, indicating potential bot activity
+              alert("Bot activity detected. Form submission aborted.");
+            } else {
+              // Honeypot field is not completed, proceed with form submission
+              var form = event.target;
+              form.submit(); // Submit the form
+            }
+          }
+        </script>
+        
       </div>
 
       </div>
