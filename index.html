@@ -643,6 +643,14 @@
           function submitForm(event) {
             event.preventDefault();
             var form = event.target;
+            var honeypotValue = document.querySelector('input[name="adress"]').value;
+        
+            if (honeypotValue) {
+              // Honeypot field is completed, indicating potential bot activity
+              alert("Bot activity detected. Form submission aborted.");
+              return; // Exit the function, preventing form submission
+            }
+        
             var formData = new FormData(form);
         
             fetch(form.action, {
@@ -652,37 +660,19 @@
                 'Accept': 'application/json'
               }
             })
-            .then(response => {
-              if (!response.ok) {
-                throw new Error(response.statusText);
-              }
-              return response.json();
-            })
-            .then(data => {
-              alert("Tu mensaje fue enviado. Muchas gracias!");
-              form.reset();
-            })
-            .catch(error => {
-              console.error('Error:', error);
-            });
-          }
-        </script>
-        <script>
-          function submitForm(event) {
-            event.preventDefault(); // Prevent the form from submitting by default
-        
-            // Get the value of the honeypot field
-            var honeypotValue = document.querySelector('input[name="adress"]').value;
-        
-            // Check if the honeypot field is completed
-            if (honeypotValue) {
-              // Honeypot field is completed, indicating potential bot activity
-              alert("Bot activity detected. Form submission aborted.");
-            } else {
-              // Honeypot field is not completed, proceed with form submission
-              var form = event.target;
-              form.submit(); // Submit the form
-            }
+              .then(response => {
+                if (!response.ok) {
+                  throw new Error(response.statusText);
+                }
+                return response.json();
+              })
+              .then(data => {
+                alert("Tu mensaje fue enviado. Muchas gracias!");
+                form.reset();
+              })
+              .catch(error => {
+                console.error('Error:', error);
+              });
           }
         </script>
         
