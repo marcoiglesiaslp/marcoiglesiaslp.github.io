@@ -39,6 +39,11 @@
 
 <body>
 
+  <!-- ======= WhatsApp Button ======= -->
+  <a href="https://wa.me/+5491161951262?text=Hola!%20estuve%20visitando%20tu%20sitio%20web%20y%20quisiera%20que%20me%20contacten%20para%20hacer%20una%20consulta." target="_blank" class="whatsapp-btn" title="Contactar por WhatsApp">
+    <img src="assets/img/logos/whatsapp.png" alt="WhatsApp" width="30" height="30" />
+  </a>
+
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center justify-content-between">
@@ -69,7 +74,7 @@
       <h1>Viví tranquilo. Viví seguro.</h1>
       <h2>Somos una productora de seguros con mas de 28 años de experiencia</h2>
       <div class="d-flex">
-        <a href="#contact" class="btn-get-started scrollto">Contactar por WhatsApp</a>
+        <a href="https://wa.me/+5491161951262?text=Hola!%20estuve%20visitando%20tu%20sitio%20web%20y%20quisiera%20que%20me%20contacten%20para%20hacer%20una%20consulta." target="_blank" class="btn-get-started scrollto">Contactar por Whatsapp</a>
       </div>
     </div>
   </section><!-- End Hero -->
@@ -588,22 +593,22 @@
             <div class="col-md-12">
               <div class="info-box">
                 <i class="bx bx-map"></i>
-                <h3>Our Address</h3>
-                <p>A108 Adam Street, New York, NY 535022</p>
+                <h3>Ubicación</h3>
+                <p>City Bell (1896), Buenos Aires ARG</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4">
                 <i class="bx bx-envelope"></i>
-                <h3>Email Us</h3>
-                <p>info@example.com<br>contact@example.com</p>
+                <h3>Email</h3>
+                <p>andrademarco54@yahoo.com.ar<br>andrademarco54@yahoo.com.ar</p>
               </div>
             </div>
             <div class="col-md-6">
               <div class="info-box mt-4">
                 <i class="bx bx-phone-call"></i>
-                <h3>Call Us</h3>
-                <p>+1 5589 55488 55<br>+1 6678 254445 41</p>
+                <h3>Teléfono</h3>
+                <p> +54 9 11 6195-1262<br> +54 9 11 6195-1262</p>
               </div>
             </div>
           </div>
@@ -611,7 +616,8 @@
         </div>
 
         <div class="col-lg-6 mt-4 mt-lg-0">
-          <form action="forms/contact.php" method="post" role="form" class="php-email-form">
+          <form action="https://formspree.io/f/mwkjzbya" method="POST" onsubmit="submitForm(event)" class="php-email-form">
+            <!-- Form inputs -->
             <div class="row">
               <div class="col-md-6 form-group">
                 <input type="text" name="name" class="form-control" id="name" placeholder="Your Name" required>
@@ -626,14 +632,90 @@
             <div class="form-group mt-3">
               <textarea class="form-control" name="message" rows="5" placeholder="Message" required></textarea>
             </div>
+            <!-- Loading, error, and success messages -->
             <div class="my-3">
               <div class="loading">Loading</div>
               <div class="error-message"></div>
               <div class="sent-message">Your message has been sent. Thank you!</div>
             </div>
+            <!-- Submit button -->
             <div class="text-center"><button type="submit">Send Message</button></div>
           </form>
         </div>
+        
+        <!-- Hidden field for honeypot -->
+        <style>
+          .honeypot {
+            display: none;
+          }
+        </style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+<script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+<script>
+  $(document).ready(function() {
+    $('form').validate({
+      rules: {
+        name: 'required',
+        email: {
+          required: true,
+          email: true
+        },
+        honeypot: {
+          required: function() {
+            return $('[name="honeypot"]').val().length === 0;
+          }
+        },
+        subject: 'required',
+        message: 'required'
+      },
+      messages: {
+        name: 'Please enter your name',
+        email: {
+          required: 'Please enter your email address',
+          email: 'Please enter a valid email address'
+        },
+        honeypot: 'Please leave this field blank.',
+        subject: 'Please enter the subject',
+        message: 'Please enter your message'
+      },
+      submitHandler: function(form) {
+        // Form submission is valid, proceed with processing
+        form.submit();
+      }
+    });
+  });
+</script>
+
+<script>
+  function submitForm(event) {
+    event.preventDefault();
+    var form = event.target;
+    var formData = new FormData(form);
+
+    fetch(form.action, {
+      method: form.method,
+      body: formData,
+      headers: {
+        'Accept': 'application/json'
+      }
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error(response.statusText);
+      }
+      return response.json();
+    })
+    .then(data => {
+      alert("Tu mensaje fue enviado. Muchas gracias!");
+      form.reset();
+    })
+    .catch(error => {
+      console.error('Error:', error);
+    });
+  }
+</script>
+        
 
       </div>
 
@@ -650,19 +732,19 @@
 
           <div class="col-lg-3 col-md-6">
             <div class="footer-info">
-              <h3>Dewi</h3>
+              <h3>Marco Iglesias</h3>
               <p>
-                A108 Adam Street <br>
-                NY 535022, USA<br><br>
-                <strong>Phone:</strong> +1 5589 55488 55<br>
-                <strong>Email:</strong> info@example.com<br>
+                City Bell (1896) <br>
+                Buenos Aires, ARG<br><br>
+                <strong>Tel:</strong> +54 9 11 6195-1262<br>
+                <strong>Email:</strong> andrademarco54@yahoo.com.ar<br>
               </p>
               <div class="social-links mt-3">
-                <a href="#" class="twitter"><i class="bx bxl-twitter"></i></a>
-                <a href="#" class="facebook"><i class="bx bxl-facebook"></i></a>
-                <a href="#" class="instagram"><i class="bx bxl-instagram"></i></a>
-                <a href="#" class="google-plus"><i class="bx bxl-skype"></i></a>
-                <a href="#" class="linkedin"><i class="bx bxl-linkedin"></i></a>
+                <a href="https://www.instagram.com/marcoiglesias_seguros/" class="instagram"><i class="bx bxl-instagram"></i></a>
+                <a href="https://www.facebook.com/marco.iglesiasseguros" class="facebook"><i class="bx bxl-facebook"></i></a>
+                <a href="https://wa.me/+5491161951262?text=Hola!%20estuve%20visitando%20tu%20sitio%20web%20y%20quisiera%20que%20me%20contacten%20para%20hacer%20una%20consulta." class="whatsapp"><i class="bx bxl-whatsapp"></i></a>
+                <a href="mailto:andrademarco54@yahoo.com.ar" class="google-plus"><i class="bx bxl-gmail"></i></a>
+                <a href="https://ar.linkedin.com/in/marco-tulio-andrade-iglesias-1b868852" class="linkedin"><i class="bx bxl-linkedin"></i></a>
               </div>
             </div>
           </div>
@@ -690,10 +772,11 @@
           </div>
 
           <div class="col-lg-4 col-md-6 footer-newsletter">
-            <h4>Our Newsletter</h4>
-            <p>Tamen quem nulla quae legam multos aute sint culpa legam noster magna</p>
+            <h4>Nuestro Newsletter</h4>
+            <p>Suscribite a nuestro Newsletter para enterarte de todas las novedades que tenemos para vos.</p>
             <form action="" method="post">
-              <input type="email" name="email"><input type="submit" value="Subscribe">
+              <input type="email" name="email">
+              <input type="submit" value="Coming soon">
             </form>
 
           </div>
@@ -704,20 +787,20 @@
 
     <div class="container">
       <div class="copyright">
-        &copy; Copyright <strong><span>Dewi</span></strong>. All Rights Reserved
+        &copy; Copyright <strong><span>InitechSolutions</span></strong>. All Rights Reserved
       </div>
       <div class="credits">
         <!-- All the links in the footer should remain intact. -->
         <!-- You can delete the links only if you purchased the pro version. -->
         <!-- Licensing information: https://bootstrapmade.com/license/ -->
         <!-- Purchase the pro version with working PHP/AJAX contact form: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/ -->
-        Designed by <a href="https://bootstrapmade.com/">BootstrapMade</a>
+        Powered by <a href="https://leandroeguia.com.ar/">Leguia</a>
       </div>
     </div>
   </footer><!-- End Footer -->
 
   <div id="preloader"></div>
-  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
+  <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short" title="Subir"></i></a>
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/purecounter/purecounter_vanilla.js"></script>

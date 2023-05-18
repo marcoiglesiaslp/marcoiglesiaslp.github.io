@@ -32,7 +32,6 @@ h5,
 h6 {
   font-family: "Raleway", sans-serif;
 }
-
 /*--------------------------------------------------------------
 # Back to top button
 --------------------------------------------------------------*/
@@ -40,24 +39,25 @@ h6 {
   position: fixed;
   visibility: hidden;
   opacity: 0;
+  top: 90px;
   right: 15px;
-  bottom: 15px;
   z-index: 996;
-  background: #ff4a17;
+  background: #2487ce;
   width: 40px;
   height: 40px;
-  border-radius: 4px;
+  border-radius: 50%;;
+  padding: 10px;
   transition: all 0.4s;
 }
 
 .back-to-top i {
-  font-size: 24px;
+  font-size: 28px;
   color: #fff;
   line-height: 0;
 }
 
 .back-to-top:hover {
-  background: #ff6a40;
+  background: #3e9bdd;
   color: #fff;
 }
 
@@ -65,6 +65,7 @@ h6 {
   visibility: visible;
   opacity: 1;
 }
+
 
 /*--------------------------------------------------------------
 # Preloader
@@ -1780,4 +1781,23 @@ section {
 .why-us .box:hover h4,
 .why-us .box:hover p {
   color: #fff;
+}
+
+.whatsapp-btn {
+  position: fixed;
+  bottom: 60px;
+  right: 10px;
+  background-color: #25d366;
+  color: #fff;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 30px;
+  z-index: 9999;
+  display: flex; /* added */
+  align-items: center; /* added */
+}
+
+
+.whatsapp-btn:hover {
+  background-color: #128c7e;
 }
