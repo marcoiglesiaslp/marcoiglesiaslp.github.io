@@ -1785,7 +1785,7 @@ section {
 
 .whatsapp-btn {
   position: fixed;
-  bottom: 60px;
+  bottom: 30px;
   right: 10px;
   background-color: #25d366;
   color: #fff;
@@ -1948,4 +1948,20 @@ section {
 
 .honeypot {
   display: none;
+}
+
+
+ul.dot-list {
+  list-style-type: disc;
+  margin-left: 20px;
+}
+
+ul.dot-list li {
+  margin-bottom: 5px;
+}
+
+
+.numbered-list {
+  list-style-type: decimal;
+  padding-left: 20px;
 }
