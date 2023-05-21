@@ -2,38 +2,35 @@
 document.querySelectorAll('a.nav-link').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
       e.preventDefault();
-      const target = document.querySelector(this.getAttribute('href'));
-      window.scrollTo({
-        top: target.offsetTop,
-        behavior: 'smooth'
-      });
-      history.pushState(null, null, this.getAttribute('href'));
+      const section = this.getAttribute('href');
+      const target = document.querySelector(section);
+      if (target) {
+        target.scrollIntoView({
+          behavior: 'smooth'
+        });
+        const urlWithoutHash = window.location.href.split('#')[0]; // Remove the hash from the current URL
+        history.pushState(null, null, urlWithoutHash + section);
+      }
     });
   });
   
   // Update URL on page load or manual URL changes
   window.addEventListener('load', function () {
-    const hash = window.location.hash;
-    if (hash) {
-      const target = document.querySelector(hash);
+    const path = window.location.pathname;
+    if (path !== '/') {
+      const target = document.querySelector(`#${path.substr(1)}`);
       if (target) {
-        window.scrollTo({
-          top: target.offsetTop,
-          behavior: 'smooth'
-        });
+        target.scrollIntoView();
       }
     }
   });
   
   window.addEventListener('popstate', function () {
-    const hash = window.location.hash;
-    if (hash) {
-      const target = document.querySelector(hash);
+    const path = window.location.pathname;
+    if (path !== '/') {
+      const target = document.querySelector(`#${path.substr(1)}`);
       if (target) {
-        window.scrollTo({
-          top: target.offsetTop,
-          behavior: 'smooth'
-        });
+        target.scrollIntoView();
       }
     }
   });
