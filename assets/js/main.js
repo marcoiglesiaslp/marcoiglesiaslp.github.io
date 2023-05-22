@@ -1,7 +1,7 @@
 /**
-* Template Name: OnePage
+* Template Name: Dewi
 * Updated: Mar 10 2023 with Bootstrap v5.2.3
-* Template URL: https://bootstrapmade.com/onepage-multipurpose-bootstrap-template/
+* Template URL: https://bootstrapmade.com/dewi-free-multi-purpose-html-template/
 * Author: BootstrapMade.com
 * License: https://bootstrapmade.com/license/
 */
@@ -67,6 +67,10 @@
   const scrollto = (el) => {
     let header = select('#header')
     let offset = header.offsetHeight
+
+    if (!header.classList.contains('header-scrolled')) {
+      offset -= 20
+    }
 
     let elementPos = select(el).offsetTop
     window.scrollTo({
@@ -187,25 +191,20 @@
       el: '.swiper-pagination',
       type: 'bullets',
       clickable: true
-    },
-    breakpoints: {
-      320: {
-        slidesPerView: 1,
-        spaceBetween: 20
-      },
-
-      1200: {
-        slidesPerView: 3,
-        spaceBetween: 20
-      }
     }
   });
+
+  function getCurrentScroll() {
+    return window.pageYOffset || document.documentElement.scrollTop;
+  }
 
   /**
    * Porfolio isotope and filter
    */
   window.addEventListener('load', () => {
+
     let portfolioContainer = select('.portfolio-container');
+
     if (portfolioContainer) {
       let portfolioIsotope = new Isotope(portfolioContainer, {
         itemSelector: '.portfolio-item'
@@ -226,6 +225,7 @@
         portfolioIsotope.on('arrangeComplete', function() {
           AOS.refresh()
         });
+
       }, true);
     }
 
@@ -261,10 +261,10 @@
   window.addEventListener('load', () => {
     AOS.init({
       duration: 1000,
-      easing: 'ease-in-out',
+      easing: "ease-in-out",
       once: true,
       mirror: false
-    })
+    });
   });
 
   /**
