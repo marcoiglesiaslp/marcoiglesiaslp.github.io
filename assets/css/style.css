@@ -113,89 +113,6 @@ h6 {
   }
 }
 
-
-/*--------------------------------------------------------------
-# Top Bar
---------------------------------------------------------------*/
-#topbar {
-  background: #1c1c1c;
-  padding: 10px 0;
-  font-size: 14px;
-  color: #9b9b9b;
-}
-
-#topbar .contact-info i {
-  font-style: normal;
-  color: #8fc04e;
-}
-
-#topbar .contact-info i a,
-#topbar .contact-info i span {
-  padding-left: 5px;
-  color: #fff;
-}
-
-#topbar .contact-info i a {
-  line-height: 0;
-  transition: 0.3s;
-}
-
-#topbar .contact-info i a:hover {
-  color: #8fc04e;
-}
-
-#topbar .social-links a {
-  color: #9b9b9b;
-  line-height: 0;
-  transition: 0.3s;
-  margin-left: 10px;
-}
-
-#topbar .social-links a:hover {
-  color: white;
-}
-
-
-/*--------------------------------------------------------------
-# Header
---------------------------------------------------------------*/
-#header {
-  height: 70px;
-  transition: all 0.5s;
-  z-index: 997;
-  transition: all 0.5s;
-  background: #0f0f0f;
-}
-
-#header .logo h1 {
-  font-size: 28px;
-  margin: 10px;
-  padding: 11px 0;
-  line-height: 1;
-  font-weight: 700;
-  letter-spacing: 1px;
-  font-family: "Poppins", sans-serif;
-}
-
-#header .logo h1 a,
-#header .logo h1 a:hover {
-  color: #fff;
-  text-decoration: none;
-}
-
-#header .logo img {
-  padding: 0;
-  margin: 0;
-  max-height: 40px;
-}
-
-.scrolled-offset {
-  margin-top: 50px;
-}
-
-
-
-
 /*--------------------------------------------------------------
 # Header
 --------------------------------------------------------------*/
@@ -207,13 +124,13 @@ h6 {
 
 #header.header-scrolled,
 #header.header-inner-pages {
-  background: rgba(54, 82, 102, 0.85);
+  background: rgba(21, 34, 43, 0.85);
   padding: 10px 0;
 }
 
 #header .logo {
   font-size: 32px;
-  margin: 10px;
+  margin: 0;
   padding: 0;
   line-height: 1;
   font-weight: 700;
@@ -225,7 +142,7 @@ h6 {
 }
 
 #header .logo img {
-  max-height: 50px;
+  max-height: 70px;
 }
 
 /*--------------------------------------------------------------

@@ -45,64 +45,43 @@
     <img src="assets/img/logos/whatsapp.png" alt="WhatsApp" width="30" height="30" />
   </a>
 
-    <!-- ======= Top Bar ======= -->
-    <section id="topbar" class="d-flex align-items-center">
-      <div class="container d-flex justify-content-center justify-content-md-between">
-        <div class="contact-info d-flex align-items-center">
-          <i class="bi bi-envelope d-flex align-items-center"><a href="mailto:andrademarco54@yahoo.com.ar">andrademarco54@yahoo.com.ar</a></i>
-          <i class="bi bi-phone d-flex align-items-center ms-4"><span> 11 6195-1262</span></i>
-        </div>
-        <div class="social-links d-none d-md-flex align-items-center">
-          <a href="https://www.instagram.com/marcoiglesias_seguros/" class="instagram"><i class="bi bi-instagram"></i></a>
-          <a href="https://www.facebook.com/marco.iglesiasseguros" class="facebook"><i class="bi bi-facebook"></i></a>
-          <a href="https://wa.me/+5491161951262?text=Hola!%20estuve%20visitando%20tu%20sitio%20web%20y%20quisiera%20que%20me%20contacten%20para%20hacer%20una%20consulta." class="whatsapp"><i class="bi bi-whatsapp"></i></a>
-          <a href="mailto:andrademarco54@yahoo.com.ar" class="google-plus"><i class="bi bi-envelope"></i></a>
-          <a href="https://ar.linkedin.com/in/marco-tulio-andrade-iglesias-1b868852" class="linkedin"><i class="bi bi-linkedin"></i></a>
-        </div>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center justify-content-between">
+
+      <style>
+        .logo-container {
+          display: flex;
+          align-items: center;
+          margin-left: 0px;
+        }
+        
+        .logo img {
+          margin-right: 20px;
+        }
+      </style>
+      
+      <div class="logo-container">
+        <a class="logo"><img src="assets/img/favicon.png" alt="" class="img-fluid"></a>
+        <h1 class="logo"><a href="index.html">Seguros Marco Iglesias</a></h1>
       </div>
-    </section>
-  
-<!-- ======= Header ======= -->
-<header id="header" class="d-flex align-items-center">
-  <div class="container d-flex justify-content-between">
+      <!-- Uncomment below if you prefer to use an image logo -->
 
-    <style>
-      .logo-container {
-        display: flex;
-        align-items: center;
-      }
-    
-      .logo-container .logo img {
-        margin-right: 50px; /* Adjust the value as per your preference */
-      }
-    </style>
-    
-    <div class="logo-container">
-      <a class="logo"><img src="assets/img/favicon.png" alt="" class="img-fluid"></a>
-      <h1 class="logo"><a href="index.html">Seguros Marco Iglesias</a></h1>
+
+      <nav id="navbar" class="navbar">
+        <ul>
+          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
+          <li><a class="nav-link scrollto" href="#about">Nosotros</a></li>
+          <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
+          <li><a class="nav-link scrollto" href="#about-boxes">Planes</a></li>
+          <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
+          <li><a class="nav-link scrollto" href="#contact">Contactar</a></li>
+        </ul>
+        <i class="bi bi-list mobile-nav-toggle"></i>
+      </nav><!-- .navbar -->
+
     </div>
-    
-    
-   
-
-    <nav id="navbar" class="navbar">
-      <ul>
-        <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-        <li><a class="nav-link scrollto" href="#about">Nosotros</a></li>
-        <li><a class="nav-link scrollto" href="#services">Servicios</a></li>
-        <li><a class="nav-link scrollto" href="#about-boxes">Planes</a></li>
-        <li><a class="nav-link scrollto" href="#faq">FAQ</a></li>
-        <li><a class="nav-link scrollto" href="#contact">Contactar</a></li>
-      </ul>
-      <i class="bi bi-list mobile-nav-toggle"></i>
-    </nav><!-- .navbar -->
-
-  </div>
-</header><!-- End Header -->
-
-
-
-  
+  </header><!-- End Header -->
 
   <!-- ======= Hero Section ======= -->
   <section id="hero">
@@ -242,28 +221,28 @@
       <div class="row" data-aos="fade-up" data-aos-delay="200">
         <div class="col-md-6">
           <div class="icon-box">
-            <i class="bi bi-person"></i>
+            <i class="bi bi-laptop"></i>
             <h4><a href="#">Seguros personales</a></h4>
             <p>Tenemos los mejores seguros para vos y tu familia.</p>
           </div>
         </div>
         <div class="col-md-6 mt-4 mt-md-0">
           <div class="icon-box">
-            <i class="bi bi-house-check"></i>
+            <i class="bi bi-clock"></i>
             <h4><a href="#">Seguros Patrimoniales</a></h4>
             <p>Protegé todos tus bienes con nuestos exclusivos planes de seguros.</p>
           </div>
         </div>
         <div class="col-md-6 mt-4 mt-md-0">
           <div class="icon-box">
-            <i class="bi bi-building"></i>
+            <i class="bi bi-bar-chart"></i>
             <h4><a href="#">Seguros para empresas</a></h4>
             <p>Asegurá tu obra o construcción con nuestros planes especializados.</p>
           </div>
         </div>
         <div class="col-md-6 mt-4 mt-md-0">
           <div class="icon-box">
-            <i class="bi bi-star"></i>
+            <i class="bi bi-briefcase"></i>
             <h4><a href="#">Planes Exclusivos</a></h4>
             <p>Tenemos novedades en planes de seguros patrimoniales</p>
           </div>
@@ -411,12 +390,12 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonial-1.jpg" class="testimonial-img" alt="">
-                <h3>Matías Cardona</h3>
-                <h4>Cliente</h4>
+                <img src="assets/img/testimonials/testimonials-1.jpg" class="testimonial-img" alt="">
+                <h3>Saul Goodman</h3>
+                <h4>Ceo &amp; Founder</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                    Destaco la calidez y cordialidad de la atención, la productora hace énfasis en escucharnos como clientes y buscarnos la mejor cobertura.
+                  Proin iaculis purus consequat sem cure digni ssim donec porttitora entum suscipit rhoncus. Accusantium quam, ultricies eget id, aliquam eget nibh et. Maecen aliquam, risus at semper.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -424,12 +403,12 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonial-1.jpg" class="testimonial-img" alt="">
-                <h3>Carlos Sartancángelo</h3>
-                <h4>Cliente</h4>
+                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                   La atención de Marco es excelente, siempre con buena predisposición para atender mis consultas.
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -437,12 +416,12 @@
 
             <div class="swiper-slide">
               <div class="testimonial-item">
-                <img src="assets/img/testimonials/testimonial-1.jpg" class="testimonial-img" alt="">
-                <h3>Andrea Miller</h3>
-                <h4>Cliente</h4>
+                <img src="assets/img/testimonials/testimonials-2.jpg" class="testimonial-img" alt="">
+                <h3>Sara Wilsson</h3>
+                <h4>Designer</h4>
                 <p>
                   <i class="bx bxs-quote-alt-left quote-icon-left"></i>
-                  Excelente atención, me despreocupo sabiendo que los planes que me recomendaron me mantienen cubierta ante cualquier eventualidad.
+                  Export tempor illum tamen malis malis eram quae irure esse labore quem cillum quid cillum eram malis quorum velit fore eram velit sunt aliqua noster fugiat irure amet legam anim culpa.
                   <i class="bx bxs-quote-alt-right quote-icon-right"></i>
                 </p>
               </div>
@@ -461,7 +440,7 @@
       <div class="container" data-aos="fade-up">
 
         <div class="section-title">
-          <h2>FAQ</h2>
+          <h2>Frequently Asked Questions</h2>
           <p>Preguntas mas frecuentes</p>
         </div>
 
@@ -668,7 +647,7 @@
           </div>
 
           <div class="col-lg-2 col-md-6 footer-links">
-            <h4>Links</h4>
+            <h4>Useful Links</h4>
             <ul>
               <li><i class="bx bx-chevron-right"></i> <a href="#hero">Home</a></li>
               <li><i class="bx bx-chevron-right"></i> <a href="#about">Nosotros</a></li>
