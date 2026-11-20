@@ -1,15 +1,14 @@
 /* Local help panel: no remote chat client or fabricated unread messages. */
-.support-widget { position: fixed; z-index: 990; right: 24px; bottom: calc(24px + env(safe-area-inset-bottom,0px)); width: 300px; max-width: calc(100vw - 40px); opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .4s ease,transform .5s var(--motion-ease),visibility .4s; }
+.support-widget { position: fixed; z-index: 990; right: 24px; bottom: calc(24px + env(safe-area-inset-bottom,0px)); width: 270px; max-width: calc(100vw - 40px); opacity: 0; visibility: hidden; transform: translateY(12px); transition: opacity .4s ease,transform .5s var(--motion-ease),visibility .4s; }
 .support-widget[hidden],.support-widget [hidden],.support-panel [hidden] { display: none; }
 .support-widget.is-visible { opacity: 1; visibility: visible; transform: none; }
 .support-widget.is-visible { animation: support-notice-in .85s cubic-bezier(.22,1,.36,1)!important; }
 .support-badge { position: absolute; top: -7px; right: -7px; display: grid; place-items: center; width: 23px; height: 23px; border: 2px solid #fff; border-radius: 50%; background: #d72f42; color: #fff; font-size: 12px; font-weight: 700; line-height: 1; pointer-events: none; box-shadow: 0 2px 8px #67132426; }
 .support-widget.is-read .support-badge { display: none; }
-.support-launcher { display: flex; gap: 12px; align-items: center; width: 100%; min-height: 80px; padding: 16px 40px 16px 16px; background: #203e55; color: #fff; border: 1px solid #466780; border-radius: 16px; box-shadow: 0 8px 32px #102a3d24; text-align: left; }
+.support-launcher { display: flex; gap: 10px; align-items: center; width: 100%; min-height: 64px; padding: 12px 36px 12px 12px; background: #203e55; color: #fff; border: 1px solid #466780; border-radius: 16px; box-shadow: 0 8px 32px #102a3d24; text-align: left; }
 .support-launcher img { border-radius: 50%; background: #fff; flex-shrink: 0; }
 .support-launcher>span { min-width: 0; }
 .support-launcher strong { display: block; font-size: 13px; line-height: 1.5; font-weight: 600; }
-.support-launcher small { display: block; margin-top: 4px; font-size: 11px; line-height: 1.5; color: #d5e4ef; }
 .support-launcher>i { display: none; font-size: 20px; }
 .support-widget { display: grid; }
 .support-launcher { grid-area: 1 / 1; }
@@ -21,7 +20,7 @@
 .support-dismiss { position: absolute; top: 0; right: 0; width: 44px; height: 44px; border: 0; background: none; color: #d5e4ef; border-radius: 12px; font-size: 20px; }
 .support-widget.is-minimized { width: auto; }
 .support-widget.is-minimized .support-launcher { min-height: 48px; padding: 10px 16px; gap: 10px; border-radius: 12px; }
-.support-widget.is-minimized .support-launcher img,.support-widget.is-minimized small,.support-widget.is-minimized .support-dismiss { display: none; }
+.support-widget.is-minimized .support-launcher img,.support-widget.is-minimized .support-dismiss { display: none; }
 .support-widget.is-minimized .support-launcher>i { display: block; }
 .support-panel { position: fixed; inset: auto 24px calc(24px + env(safe-area-inset-bottom,0px)) auto; margin: 0; width: 390px; max-width: calc(100vw - 32px); max-height: calc(100dvh - 48px - env(safe-area-inset-bottom,0px)); padding: 0; border: 1px solid #cadbe7; border-radius: 20px; background: #f5f8fb; color: #203e55; overflow-y: auto; overscroll-behavior: contain; box-shadow: 0 20px 70px #07162240; }
 .support-panel::backdrop { background: #081a3040; }
@@ -54,7 +53,7 @@ html[data-theme] .support-whatsapp { display: flex; align-items: center; gap: 10
 @keyframes support-panel-in { from { opacity: 0; transform: translateY(18px) scale(.97); } to { opacity: 1; transform: translateY(0) scale(1); } }
 @keyframes support-notice-in { 0% { opacity: 0; transform: translateY(24px) scale(.94); } 70% { opacity: 1; transform: translateY(-2px) scale(1.008); } 100% { opacity: 1; transform: translateY(0) scale(1); } }
 html[data-theme=dark] .support-launcher { background: #fff; color: #203e55; border-color: #d1dfe8; }
-html[data-theme=dark] .support-launcher small,html[data-theme=dark] .support-dismiss { color: #526b7d; }
+html[data-theme=dark] .support-dismiss { color: #526b7d; }
 html[data-theme=dark] .support-panel { background: #eef4f8; color: #203e55; border-color: #cbdce7; }
 html[data-theme=dark] .support-header { background: #375f7a; }
 html[data-theme=dark] .support-whatsapp { background: #244b67; color: #fff; }
@@ -64,7 +63,7 @@ html[data-theme=dark] .support-help details+details { border-color: #e0e8ef; }
 html[data-theme=dark] .support-help details p,html[data-theme=dark] .support-channel-note,html[data-theme=dark] .support-help summary::after { color: #526b7d; }
 html[data-theme=dark] .support-all-faq { color: #244b67; }
 @media(max-width:767px) {
-  .support-widget { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom,0px)); width: 280px; }
+  .support-widget { right: 16px; bottom: calc(16px + env(safe-area-inset-bottom,0px)); width: 248px; }
   .support-panel { right: 12px; bottom: calc(12px + env(safe-area-inset-bottom,0px)); max-width: calc(100vw - 24px); max-height: calc(100dvh - 24px - env(safe-area-inset-bottom,0px)); }
   .support-header { padding: 22px 20px 24px; }.support-content { padding: 16px; }
 }

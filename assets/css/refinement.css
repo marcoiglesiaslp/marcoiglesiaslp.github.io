@@ -242,3 +242,123 @@ html[data-theme=dark] .step-number { color: #e0bd7a; }
   #hero .hero-secondary { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; padding: 8px 0; background: none; border: 0; text-decoration: underline; text-underline-offset: 5px; }
   #hero .hero-actions { gap: 6px; }
 }
+
+/* Light palette: pearl and sand surfaces, with deep coastal blues for contrast. */
+html:not([data-theme=dark]) {
+  --light-cta: linear-gradient(115deg,#203e55 0%,#245967 100%);
+  --light-cta-hover: linear-gradient(115deg,#17374e 0%,#1b4c58 100%);
+}
+html:not([data-theme=dark]) body { background: #fafaf7; }
+html:not([data-theme=dark]) #about {
+  background: radial-gradient(ellipse at 95% 12%,#dceee78c,transparent 58%),linear-gradient(145deg,#fffdfa,#f5f8f5);
+}
+html:not([data-theme=dark]) #about .video-box { border-radius: 20px; }
+html:not([data-theme=dark]) #about .experience-card {
+  background: linear-gradient(125deg,#203e55,#245967);
+  border: 1px solid #ffffff40;
+  border-radius: 14px;
+  box-shadow: 0 12px 30px #17374e1c;
+}
+html:not([data-theme=dark]) .section-title .section-kicker::after {
+  background: linear-gradient(90deg,#bd9451,#bd945120);
+}
+html:not([data-theme=dark]) #why-us {
+  background: radial-gradient(ellipse at 90% 15%,#397a7859,transparent 60%),radial-gradient(ellipse at 10% 95%,#bd945124,transparent 55%),linear-gradient(125deg,#142f43,#1d505b 65%,#2a6072);
+  border-color: #244d5d;
+}
+html:not([data-theme=dark]) #why-us .section-title .section-heading { color: #fff; }
+html:not([data-theme=dark]) #why-us .section-title .section-kicker { color: #d0e3e5; }
+html:not([data-theme=dark]) #why-us .box {
+  border: 1px solid #fff;
+  border-radius: 18px;
+  background: #fcfdfa;
+  box-shadow: 0 12px 32px #071e2a18;
+}
+html:not([data-theme=dark]) #why-us .box:hover,html:not([data-theme=dark]) #why-us .box:focus-within {
+  background: #e4f1fa;
+  border-color: #a6cfcf;
+  box-shadow: 0 16px 36px #071e2a24;
+}
+html:not([data-theme=dark]) #services {
+  background: radial-gradient(ellipse at 5% 100%,#f1e5ce66,transparent 56%),linear-gradient(155deg,#fafbf8,#f0f7f4);
+}
+html:not([data-theme=dark]) .step-number {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border-radius: 50%;
+  background: #dfede8;
+  color: #245967;
+  font-size: 18px;
+}
+html:not([data-theme=dark]) #services .service-steps .icon-box { border-bottom-color: #ccded8; }
+html:not([data-theme=dark]) #about-boxes {
+  background: radial-gradient(ellipse at 0% 0%,#d6ebe4b3,transparent 52%),radial-gradient(ellipse at 100% 100%,#f3e7cc99,transparent 45%),linear-gradient(150deg,#eef5f1,#f9f8f1 70%);
+  border-color: #d2e2dc;
+}
+html:not([data-theme=dark]) #about-boxes .plan-card {
+  border-radius: 20px;
+  border-color: #d9e5df;
+  background: #ffffffeb;
+  box-shadow: 0 10px 32px #153b480d;
+}
+html:not([data-theme=dark]) #about-boxes .plan-card:hover,html:not([data-theme=dark]) #about-boxes .plan-card:focus-within {
+  border-color: #8db7b4;
+  box-shadow: 0 16px 38px #153b481a;
+}
+html:not([data-theme=dark]) .plan-number { color: #396969; }
+html:not([data-theme=dark]) #about-boxes .coverage-more { border-color: #d9e5df; }
+html:not([data-theme=dark]) #faq {
+  background: radial-gradient(ellipse at 95% 0%,#eee1c375,transparent 55%),linear-gradient(150deg,#fffdf8,#f3f7f4);
+  border-color: #dce5dd;
+}
+html:not([data-theme=dark]) #faq .faq-list li {
+  border: 1px solid #dae5df;
+  border-radius: 14px;
+  background: #ffffffd9;
+}
+html:not([data-theme=dark]) #faq .faq-list li:has(.faq-trigger[aria-expanded=true]) {
+  background: #edf5f1;
+  border-color: #93bab4;
+  box-shadow: 0 8px 24px #1d505b0a;
+}
+html:not([data-theme=dark]) #contact {
+  background: radial-gradient(ellipse at 95% 100%,#cce3d9ad,transparent 65%),linear-gradient(135deg,#f9faf5,#eaf3ef);
+}
+html:not([data-theme=dark]) #contact .contact-form {
+  border-radius: 22px;
+  background: #ffffffed;
+  border-color: #d2e1d9;
+  box-shadow: 0 18px 48px #143b4b10;
+}
+html:not([data-theme=dark]) #contact .contact-form :is(input,select,textarea) {
+  border-radius: 9px;
+  border-color: #c3d7ce;
+  background: #f7faf8;
+}
+html:not([data-theme=dark]) #contact .contact-form :is(input,select,textarea):focus {
+  background: #fff;
+  border-color: #6c9e99;
+}
+html:not([data-theme=dark]) #contact .direct-channels .info-box { border-color: #c7dcd2; }
+html:not([data-theme=dark]) #contact .direct-channels .info-box>i { background: #ffffffb3; border-color: #c6dbd2; }
+html:not([data-theme=dark]) :is(.about-cta,.service-cta,#about-boxes .coverage-cta,.contact-whatsapp,#contact .contact-form button) {
+  background: var(--light-cta);
+  color: #fff;
+  border-color: #244b67;
+  border-radius: 9px;
+  box-shadow: 0 5px 16px #17374e12;
+}
+html:not([data-theme=dark]) :is(.about-cta,.service-cta,#about-boxes .coverage-cta,.contact-whatsapp,#contact .contact-form button):hover {
+  background: var(--light-cta-hover);
+  color: #fff;
+}
+html:not([data-theme=dark]) #hero .btn-get-started { background: linear-gradient(115deg,#f5dca5,#e9c17b); }
+html:not([data-theme=dark]) #hero .btn-get-started:hover { background: linear-gradient(115deg,#ffe8b9,#f2d292); }
+html:not([data-theme=dark]) #footer { background: linear-gradient(120deg,#142f43,#1d4854); }
+@media(max-width:767px) {
+  html:not([data-theme=dark]) .step-number { width: 32px; height: 32px; font-size: 16px; }
+  html:not([data-theme=dark]) #contact .contact-form { border-radius: 18px; }
+}
