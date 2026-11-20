@@ -1,0 +1,13 @@
+{
+  "review_id": "landing-2026-11-19",
+  "target": "index.html; assets/css/refinement.css",
+  "focus_areas": ["visual", "usability", "copy", "maintainability", "assets"],
+  "context": "Broker de seguros, consulta por WhatsApp, identidad existente aprobada",
+  "platform": "responsive, light and dark",
+  "status": "complete",
+  "issues_found": 8,
+  "severity_counts": {"critical": 0, "major": 0, "minor": 6, "suggestion": 2},
+  "minor_issues_fixed": 6,
+  "suggestions": ["Consolidar las capas CSS en una futura refactorizacion", "Evaluar fuentes locales en una tarea de rendimiento"],
+  "report": "landing-2026-11-19.md"
+}

@@ -1,0 +1,54 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {homedir} from 'node:os';
+import path from 'node:path';
+const require=createRequire(path.resolve(process.env.FRONTEND_REFERENCE||'../altoque/apps/web/package.json'));
+const browser=await require('puppeteer').launch({headless:true,executablePath:process.env.CHROME_EXECUTABLE||path.join(homedir(),'.cache/puppeteer/chrome/win64-156.0.8078.47/chrome-win64/chrome.exe'),args:['--no-sandbox','--disable-gpu']});
+const base=process.env.LANDING_URL||'http://127.0.0.1:4173';
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+try {
+  const results=[];
+  for(const [width,height,theme] of [[390,844,'dark'],[1440,900,'light']]) {
+    const page=await browser.newPage();
+    const errors=[];
+    page.on('pageerror',error=>errors.push(error.message));
+    await page.setViewport({width,height});
+    await page.evaluateOnNewDocument(theme=>localStorage.setItem('marco-theme',theme),theme);
+    await page.setRequestInterception(true);
+    page.on('request',request=>request.url().startsWith(base)?request.continue():request.abort());
+    await page.goto(base,{waitUntil:'domcontentloaded'});
+    await page.waitForSelector('html:not(.page-loading)');
+    await page.$eval('#about-boxes',element=>element.scrollIntoView({behavior:'instant'}));
+    await page.waitForFunction(()=>!document.querySelector('.support-followup').hidden,{timeout:7000});
+    await wait(900);
+    await page.click('.support-followup');
+    await wait(5500);
+    assert.equal(await page.$eval('.support-badge',element=>getComputedStyle(element).display),'none');
+    await page.click('.support-close');
+    await wait(100);
+    assert.equal(await page.$eval('.support-badge',element=>element.textContent),'1');
+    assert(await page.$eval('.support-badge',element=>getComputedStyle(element).display!=='none'));
+    assert(await page.$eval('.support-followup',element=>element.hidden));
+    assert(await page.$eval('.support-launcher',element=>!element.inert&&element===document.activeElement));
+    assert(await page.$eval('.support-widget',element=>element.getAnimations().some(animation=>animation.animationName==='support-notice-in')));
+    await page.waitForFunction(()=>document.querySelector('.support-badge').textContent==='2',{timeout:6500});
+    await wait(900);
+    await page.click('.support-followup');
+    await wait(650);
+    await page.keyboard.press('Escape');
+    await wait(100);
+    assert.equal(await page.$eval('.support-badge',element=>element.textContent),'1');
+    assert(await page.$eval('.support-followup',element=>element.hidden));
+    await page.click('.support-dismiss');
+    await page.click('.support-launcher');
+    await wait(650);
+    await page.click('.support-close');
+    await wait(100);
+    assert(await page.$eval('.support-widget',element=>!element.classList.contains('is-minimized')));
+    assert.equal(await page.$eval('.support-launcher strong',element=>element.textContent),'¿Tenés dudas sobre tu seguro?');
+    assert.deepEqual(errors,[]);
+    results.push({width,theme,secondCycle:true,restartsAfterEscape:true,restoresAfterMinimize:true,errors});
+    await page.close();
+  }
+  console.log(JSON.stringify(results));
+} finally { await browser.close(); }

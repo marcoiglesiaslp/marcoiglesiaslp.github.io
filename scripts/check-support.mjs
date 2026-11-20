@@ -1,0 +1,21 @@
+import assert from 'node:assert/strict';
+import {createRequire} from 'node:module';
+import {homedir} from 'node:os';
+import path from 'node:path';
+import {mkdir} from 'node:fs/promises';
+const require=createRequire(path.resolve(process.env.FRONTEND_REFERENCE||'../altoque/apps/web/package.json'));
+const browser=await require('puppeteer').launch({headless:true,executablePath:process.env.CHROME_EXECUTABLE||path.join(homedir(),'.cache/puppeteer/chrome/win64-156.0.8078.47/chrome-win64/chrome.exe'),args:['--no-sandbox','--disable-gpu']});
+const base=process.env.LANDING_URL||'http://127.0.0.1:4173';
+const wait=ms=>new Promise(r=>setTimeout(r,ms));
+await mkdir('artifacts/support',{recursive:true});
+try{const results=[];for(const [width,height,theme] of [[320,568,'light'],[390,844,'light'],[390,844,'dark'],[768,1024,'light'],[1024,768,'dark'],[1440,900,'light']]){
+const page=await browser.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));await page.setViewport({width,height});await page.evaluateOnNewDocument(t=>localStorage.setItem('marco-theme',t),theme);await page.setRequestInterception(true);page.on('request',r=>r.url().startsWith(base)?r.continue():r.abort());await page.goto(base,{waitUntil:'domcontentloaded'});await page.waitForSelector('html:not(.page-loading)');assert.equal(await page.$('.whatsapp-btn'),null);assert.equal(await page.$eval('.support-widget',e=>getComputedStyle(e).visibility),'hidden');
+await page.$eval('#about-boxes',e=>e.scrollIntoView({behavior:'instant'}));await wait(1000);await page.waitForSelector('.support-widget.is-visible');await page.screenshot({path:`artifacts/support/${width}-${theme}-notice.png`});await page.click('.support-launcher');await wait(500);assert(await page.$eval('#support-panel',e=>e.open));assert.equal(await page.$eval('html',e=>getComputedStyle(e).overflow),'hidden');assert(await page.$eval('#support-panel',e=>e.contains(document.activeElement)));assert.equal(await page.$eval('.support-launcher',e=>e.getAttribute('aria-expanded')),'true');assert.equal(await page.$$eval('#support-answers details',e=>e.length),3);
+const bounds=await page.$eval('#support-panel',e=>{const r=e.getBoundingClientRect();return r.left>=0&&r.top>=0&&r.right<=innerWidth&&r.bottom<=innerHeight;});assert(bounds);assert(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth));assert(await page.$eval('.support-whatsapp',e=>new URL(e.href).pathname==='/5491164221275'&&!!new URL(e.href).searchParams.get('text')));await page.screenshot({path:`artifacts/support/${width}-${theme}-panel.png`});
+assert.equal(await page.$('#support-query'),null);
+assert.equal(await page.$eval('.support-launcher',e=>getComputedStyle(e).backgroundColor),theme==='dark'?'rgb(255, 255, 255)':'rgb(32, 62, 85)');
+assert.equal(await page.$eval('.support-badge',e=>getComputedStyle(e).display),'none');
+await page.click('#support-answers summary');assert(await page.$eval('#support-answers details',e=>e.open));
+await wait(650);await page.click('#support-answers summary');await wait(650);assert.equal(await page.$eval('#support-answers details',e=>e.open),false);
+await page.keyboard.press('Escape');await wait(50);assert.equal(await page.$eval('#support-panel',e=>e.open),false);assert.equal(await page.$eval('html',e=>e.classList.contains('support-open')),false);assert(await page.$eval('.support-launcher',e=>e===document.activeElement));await page.click('.support-dismiss');assert(await page.$eval('.support-widget',e=>e.classList.contains('is-minimized')));await page.click('.support-launcher');await page.click('.support-close');await wait(60);assert.equal(await page.$eval('#support-panel',e=>e.open),false);
+await page.click('.support-launcher');await page.click('.support-all-faq');await wait(2000);assert.equal(await page.$eval('#support-panel',e=>e.open),false);assert(await page.$eval('#faq',e=>Math.abs(e.getBoundingClientRect().top-document.querySelector('#header').offsetHeight)<3));assert.deepEqual(errors,[]);results.push({width,height,theme,panelFits:true,noSearch:true,inverseNoticeTheme:true,readBadge:true,disclosures:true,closeAndRestore:true,faqNavigation:true,errors});await page.close();}console.log(JSON.stringify(results));}finally{await browser.close();}
