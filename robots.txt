@@ -1,2 +1,4 @@
 User-agent: *
 Disallow:
+
+Sitemap: https://marcoiglesiasseguros.com.ar/sitemap.xml
